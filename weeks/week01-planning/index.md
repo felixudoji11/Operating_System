@@ -21,7 +21,8 @@ The coursework adopts a dual-system architecture consisting of:
 
 All system administration tasks are performed remotely using command-line tools. This approach enforces command-line proficiency and closely mirrors professional cloud and data-centre operational practices, where servers are rarely accessed locally or via graphical interfaces.
 
-![System Architecture Diagram](architecture-diagram.png)
+mv diagrams/architecture-diagram.png weeks/week01-planning/
+
 
 ---
 
