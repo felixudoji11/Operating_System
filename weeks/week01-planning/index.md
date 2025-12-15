@@ -1,176 +1,42 @@
-````md
-# Week 1 — Phase 1: System Planning & Distribution Selection
+# Week 1 – System Planning and Distribution Selection
 
 ## Overview
-This week marked the beginning of my operating systems coursework, where I planned and prepared the environment for deploying a secure, headless Linux server. My goal was to design a functional two-system architecture that supports remote administration entirely through SSH. This journal entry documents the decisions I made, the reasoning behind them, and the technical steps I took to build the foundation for the following weeks.
+This week focuses on planning the operating system deployment for the CMPN202 Operating Systems coursework. The primary objective is to design a secure, headless Linux server environment that is administered exclusively via Secure Shell (SSH) from a separate workstation system. 
+
+Early architectural and configuration decisions made during this phase directly influence the system’s security posture, performance characteristics, scalability, and long-term maintainability.
+
+The activities undertaken this week include:
+- System architecture design
+- Linux distribution selection and technical justification
+- Workstation choice and rationale
+- Network configuration planning
+- Baseline system specification collection using command-line tools
 
 ---
 
-## 1. System Architecture Diagram
-To begin, I mapped the entire setup to understand how the server and workstation would communicate. Since the assignment requires command-line proficiency and remote administration, I designed a dual-VM setup using VirtualBox.
+## System Architecture
+The coursework adopts a dual-system architecture consisting of:
+- A **headless Linux server virtual machine**
+- A **separate workstation system** used exclusively for remote administration via SSH
 
-**The architecture I settled on:**
+All system administration tasks are performed remotely using command-line tools. This approach enforces command-line proficiency and closely mirrors professional cloud and data-centre operational practices, where servers are rarely accessed locally or via graphical interfaces.
 
-```text
-┌────────────────────┐ SSH ┌────────────────────────┐
-│ Workstation System │──────────────────▶│ Headless Linux Server │
-│ (Ubuntu Desktop VM)│◀──────────────────│ (Ubuntu Server) │
-└────────────────────┘ Return SSH └────────────────────────┘
-▲
-│
-└────── Host-Only + NAT Networking ─────┘
-````
-
-**Reflection:**
-I chose this setup because having both systems as VMs avoids modifying my host OS and gives me full control over snapshots and network behaviour. Using host-only networking also prevents external machines from accessing my server.
+![System Architecture Diagram](architecture-diagram.png)
 
 ---
 
-## 2. Distribution Selection Justification
+## Distribution Selection
+A comparative analysis of multiple Linux server distributions was conducted to justify the final distribution choice. The evaluation focused on the following criteria:
+- Length and reliability of security support lifecycle
+- Stability and suitability for server environments
+- Package management ecosystem
+- Availability and quality of official documentation
+- Strength of community and industry adoption
 
-I compared three major server distributions before choosing Ubuntu Server.
-
-| Distribution  | Pros                                                                                               | Cons                                                     | Suitability                                            |
-| ------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------- | ------------------------------------------------------ |
-| Ubuntu Server | Large community support, excellent documentation, AppArmor enabled by default, stable LTS releases | Slightly larger package base                             | ⭐ Best balance for learning + stability                |
-| CentOS Stream | SELinux enforced by default, enterprise-focused                                                    | Rolling-release model can introduce changes unexpectedly | Good, but not ideal for this coursework                |
-| Debian Server | Very stable, minimal                                                                               | Older packages                                           | Good for production, less ideal for learning new tools |
-
-**⭐ Final Choice: Ubuntu Server 22.04 LTS**
-
-**Reasons:**
-
-* Long-term support means fewer breaking changes.
-* Native AppArmor integration for mandatory access control.
-* Easy package management with APT.
-* Perfect for a structured learning environment.
-
-**Reflection:**
-I chose Ubuntu Server because almost every tool needed in this module is well-supported, and there is extensive troubleshooting documentation available.
+Further details and the full comparison are provided here:  
+[Distribution Comparison](distro-comparison-table.md)
 
 ---
 
-## 3. Workstation Configuration Decision
-
-I had three options for the workstation:
-
-* **A.** Linux Desktop VM
-* **B.** My host machine with SSH client
-* **C.** A hybrid approach
-
-**⭐ Final Choice: Option A — Ubuntu Desktop VM**
-
-**Reasons:**
-
-* Full Linux CLI environment.
-* Avoids altering SSH keys or configs on my host OS.
-* Consistency between workstation and server improves troubleshooting.
-* Easier to snapshot before major changes.
-
-**Reflection:**
-Choosing a Linux workstation improved my terminal workflow and made it easier to use Linux-native tools such as `htop`, `nmap`, and `iftop`.
-
----
-
-## 4. Network Configuration Documentation
-
-To ensure both systems could communicate securely, I configured VirtualBox networking.
-
-### 🔧 Server VM Network Setup
-
-* Adapter 1: NAT (for internet access & package installation)
-* Adapter 2: Host-Only Adapter (for SSH communication with the workstation)
-
-### 🔧 Workstation VM Network Setup
-
-* Adapter 1: NAT
-* Adapter 2: Host-Only Adapter
-
-### Assigned IP Addresses
-
-After booting both machines, I ran `ip addr` to collect their network details.
-
-**Server output:**
-
-```bash
-$ ip addr
-2: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500
-inet 192.168.56.101/24
-```
-
-**Workstation output:**
-
-```bash
-$ ip addr
-2: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500
-inet 192.168.56.1/24
-```
-
-### Result
-
-* ✔ Both systems are now on the same host-only network
-* ✔ Server reachable only from my workstation
-* ✔ Suitable for SSH-only administration
-
-**Reflection:**
-This setup helped me understand the isolation benefits of host-only networks and how they reduce attack surface compared to bridged networking.
-
----
-
-## 5. System Specification Documentation (CLI Output)
-
-I used mandatory CLI tools to document hardware and OS details.
-
-### 🔹 `uname -a`
-
-```text
-Linux server 5.15.0-94-generic #104-Ubuntu SMP x86_64 GNU/Linux
-```
-
-### 🔹 `free -h`
-
-```text
-              total        used        free
-Mem:           2048M        350M        1600M
-Swap:          2048M          0M        2048M
-```
-
-### 🔹 `df -h`
-
-```text
-Filesystem      Size  Used Avail Use%
-/dev/sda1        20G  2.1G   17G  11%
-```
-
-### 🔹 `lsb_release -a`
-
-```text
-Distributor ID: Ubuntu
-Description:    Ubuntu 22.04.3 LTS
-```
-
-### 🔹 Server network info
-
-```bash
-$ ip addr show enp0s8
-inet 192.168.56.101/24
-```
-
-**Reflection:**
-Running these commands gave me a clearer picture of my VM resource usage and helped confirm that no graphical interface was installed, keeping the system minimal and server-oriented.
-
----
-
-## Summary of Week 1
-
-This week focused on planning and setting the foundation for the entire project. I gained a better understanding of:
-
-* Virtual machine networking
-* SSH-focused architecture design
-* Differences between server distributions
-* Documenting system information using Linux CLI tools
-
-The decisions made here shaped every phase that follows, especially regarding security and remote-only administration. Week 2 will build on this foundation by planning security policies and defining a performance testing approach.
-
-```
-```
+## Workstation Configuration
+The workstation system functions as the sole administrative access point to the server. This design decision supports strong secur
