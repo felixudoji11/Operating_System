@@ -47,11 +47,7 @@ sudo apt update
 sudo apt install stress-ng -y
 Why: Running a real service lets me analyse server response times, concurrency behaviour, and resource usage under load.
 
-## 3.3 Expected Resource Profiles
-
-Before running any tests, I wrote out what I expected each application to do. This helped me compare the predicted behaviour with actual Week 6 results.
-
-### CPU-Intensive (stress-ng)
+CPU-Intensive (stress-ng)
 **Expected:**
 
 - CPU usage spikes to 90–100%
@@ -156,7 +152,3 @@ This is how I planned to measure each application’s behaviour during testing:
 - Response time
 - Requests/sec
 - Failed requests
-
-# Week 3 Reflection
-
-Week 3 felt like the calm before the storm. I was laying down the technical foundation for the heavy-duty testing phase coming later in Week 6. I realised that picking the right applications was just as important as running them. If I had picked poorly, the results would have been inconsistent or uninteresting. This week forced me to think analytically about workload diversity, how servers behave under different resource pressures, and how I would later justify my analysis with real data.
