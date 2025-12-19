@@ -37,7 +37,6 @@ top
 vmstat 2 10
 iostat -x 2 10
 dstat -tcmnd
-
 ## 2.2 Security Configuration Checklist
 
 This section represents the core planning output of Week 2. I created a comprehensive security checklist covering all mandatory security controls required by the coursework. Each control is accompanied by a justification to demonstrate understanding of *why* the measure is necessary, not just how it is implemented.
