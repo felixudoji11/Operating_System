@@ -392,13 +392,13 @@ sudo systemctl disable --now avahi-daemon
 
 During Week 6, I successfully completed the full performance evaluation and analysis phase of the coursework. The following objectives were achieved:
 
-- ✔ Executed comprehensive performance tests across CPU, memory, disk I/O, network, and application workloads
-- ✔ Collected real quantitative performance data under baseline, load, and optimised conditions
-- ✔ Identified system bottlenecks through structured analysis
-- ✔ Implemented multiple targeted system optimisations
-- ✔ Measured performance improvements using charts and tables
-- ✔ Used both manual commands and scripted monitoring tools
-- ✔ Produced evidence-ready material suitable for inclusion in the Week 6 GitHub journal
+- Executed comprehensive performance tests across CPU, memory, disk I/O, network, and application workloads
+- Collected real quantitative performance data under baseline, load, and optimised conditions
+- Identified system bottlenecks through structured analysis
+- Implemented multiple targeted system optimisations
+- Measured performance improvements using charts and tables
+- Used both manual commands and scripted monitoring tools
+- Produced evidence-ready material suitable for inclusion in the Week 6 GitHub journal
 
 ---
 ## Final Reflection
