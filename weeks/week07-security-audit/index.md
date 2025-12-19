@@ -145,3 +145,85 @@ This included checking that:
 
 Conducting a manual configuration review reinforced the importance of human verification alongside automated tools. While scanners are valuable for identifying common issues, manual inspection ensured that security controls were implemented exactly as intended and that no subtle misconfigurations were overlooked. This step provided additional confidence in the overall security posture of the system.
 
+## System Performance Evaluation
+
+As part of the final audit, I evaluated overall system performance to ensure that security hardening and optimisation efforts had not negatively impacted stability or responsiveness.
+
+---
+
+### Resource Utilisation Monitoring
+
+I monitored **CPU, memory, and disk usage** under both normal operating conditions and simulated load scenarios.
+
+Key observations included:
+- CPU usage consistently remained below **50%**, with only minor spikes during peak processes
+- Memory usage remained stable, with no signs of excessive pressure or swapping
+- Disk usage and I/O activity were steady, confirming reliable storage performance
+
+These results indicated that the system was well balanced and not experiencing resource contention during typical operation.
+
+---
+
+### Responsiveness Testing
+
+To assess real-world usability, I tested system responsiveness by:
+- Establishing multiple SSH connections
+- Accessing the web service under normal load
+
+In all cases:
+- SSH connections were established quickly and reliably
+- Web service requests completed without noticeable latency
+- No degradation in responsiveness was observed after security controls were applied
+
+---
+
+### Reflection
+
+This evaluation confirmed that the system remained both **secure and performant**. Importantly, the layered security measures implemented throughout the coursework did not introduce unacceptable overhead or latency. Instead, the system demonstrated stable behaviour under normal and simulated workloads, reinforcing that careful security hardening and performance optimisation can coexist effectively.
+
+## Documentation and Reporting
+
+To conclude the security audit and system evaluation phase, I compiled a structured audit report that consolidated all findings from automated scans, manual reviews, and performance evaluations.
+
+---
+
+### Audit Report Contents
+
+The audit report included the following components:
+
+- **Summary of tools used**, including:
+  - Nmap (network exposure analysis)
+  - Nikto (web server vulnerability scanning)
+  - Lynis (host-based security auditing)
+- **Key outputs and observations** from each tool
+- **Detected vulnerabilities and configuration weaknesses**, where applicable
+- **Recommended mitigation steps** based on best practices and benchmark guidance
+- **Performance metrics and system health observations**, ensuring that security controls did not negatively impact usability or stability
+
+This documentation ensured that findings were traceable, repeatable, and clearly linked to earlier configuration and optimisation work.
+
+---
+
+### Lessons Learned
+
+One of the most important takeaways from this phase was that **security is not a one-time task**, even in a controlled or academic environment. Systems require continuous attention to remain secure and reliable.
+
+Key lessons reinforced during this process included:
+- Preventive measures such as **regular updates**, **monitoring**, and **access control** are critical
+- Automated tools are valuable, but **manual verification** remains essential
+- Security and performance must be evaluated together, not in isolation
+- Documentation is a core part of professional system administration, not an optional extra
+
+---
+
+### Reflection
+
+Compiling the audit report helped me step back and evaluate the system holistically. Rather than focusing on individual configurations, I was able to assess the server as a complete, operational system. This final reporting phase reinforced the importance of ongoing security management and demonstrated how layered controls, monitoring, and documentation work together to maintain a secure and efficient server.
+
+## Reflection
+
+This week highlighted the importance of **proactive system security** rather than assuming that a system is secure simply because it appears well configured. Conducting a thorough audit revealed areas for improvement, reinforcing the idea that security requires continuous verification and refinement.
+
+Using real-world auditing tools such as network scanners and host-based security analyzers gave me practical experience in identifying risks that are not always obvious during initial configuration. I also gained a deeper understanding of how small configuration oversights can introduce vulnerabilities if left unchecked.
+
+Overall, it was rewarding to see the system operating securely while maintaining strong performance. This final evaluation provided confidence that the work completed across previous weeks resulted in a system that is both **secure and efficient**, and it reinforced the importance of ongoing monitoring, auditing, and documentation in professional system administration.
