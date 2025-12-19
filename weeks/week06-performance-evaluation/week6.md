@@ -333,3 +333,40 @@ After tuning network buffer sizes and related kernel parameters, throughput incr
 
 ### Reflection
 Network tuning produced the clearest and most immediately visible performance improvements. Adjusting a small number of kernel parameters resulted in measurable gains in both throughput and latency, highlighting how impactful targeted network optimisation can be in high-bandwidth scenarios.
+
+### Response Time Analysis (End-to-End)
+
+End-to-end application response time was the most important performance metric, as it reflects the actual user experience rather than individual subsystem behaviour.
+
+During baseline testing, average response time was approximately **120 ms**. Under load, response time increased significantly to around **350 ms**, demonstrating the impact of CPU, memory, disk, and network contention on service responsiveness.
+
+After applying system optimisations, response time improved to approximately **95 ms**, outperforming even the original baseline measurement.
+
+---
+
+### Reflection
+
+This result demonstrated that optimisation efforts did more than improve individual operating system metrics—they directly enhanced real service performance. Reducing response time beyond the baseline confirmed that targeted tuning across multiple subsystems can produce meaningful improvements from an end-user perspective, not just at the OS level.
+
+## 6.5 Optimisations Implemented
+
+This section documents the specific optimisation changes applied after analysing performance bottlenecks. Each optimisation was selected based on observed behaviour during stress testing and was validated through re-testing.
+
+---
+
+### 1. Increased File Descriptor Limits
+
+To support higher concurrency and prevent resource exhaustion under load, I increased the system-wide file descriptor limits. This is particularly important for network services and applications that handle many simultaneous connections.
+
+#### Configuration Changes
+```bash
+sudo nano /etc/security/limits.conf
+
+### 2. Enabled zRAM Compression
+
+To reduce memory pressure and minimise disk swapping during memory-intensive workloads, I enabled **zRAM**, which provides compressed swap space in RAM.
+
+#### Installation
+```bash
+sudo apt install zram-tools
+
