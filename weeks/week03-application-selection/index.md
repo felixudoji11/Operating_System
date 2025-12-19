@@ -47,5 +47,4 @@ sudo apt update
 sudo apt install stress-ng -y
 ---
 ### 3.2.2 Installing `fio`
-```bash
 sudo apt install fio -y
