@@ -361,12 +361,48 @@ To support higher concurrency and prevent resource exhaustion under load, I incr
 #### Configuration Changes
 ```bash
 sudo nano /etc/security/limits.conf
-
-### 2. Enabled zRAM Compression
+```
+### 2.Enabled zRAM Compression
 
 To reduce memory pressure and minimise disk swapping during memory-intensive workloads, I enabled **zRAM**, which provides compressed swap space in RAM.
 
 #### Installation
 ```bash
 sudo apt install zram-tools
+```
+### 3. Tuned Kernel Parameters (`sysctl`)
+
+To further optimise system behaviour under load, I tuned selected kernel parameters related to **network buffering** and **memory management**. These changes were applied to improve throughput, reduce latency, and minimise unnecessary swapping.
+```
+#### Configuration Changes
+```bash
+sudo nano /etc/sysctl.conf
+```
+### 4. Disabled Unnecessary Services
+
+To reduce background resource usage and improve overall system responsiveness, I identified and disabled services that were not required for a headless server environment.
+
+#### Commands Executed
+```bash
+sudo systemctl disable --now cups
+sudo systemctl disable --now avahi-daemon
+
+## Week 6 Summary
+
+During Week 6, I successfully completed the full performance evaluation and analysis phase of the coursework. The following objectives were achieved:
+
+- ✔ Executed comprehensive performance tests across CPU, memory, disk I/O, network, and application workloads
+- ✔ Collected real quantitative performance data under baseline, load, and optimised conditions
+- ✔ Identified system bottlenecks through structured analysis
+- ✔ Implemented multiple targeted system optimisations
+- ✔ Measured performance improvements using charts and tables
+- ✔ Used both manual commands and scripted monitoring tools
+- ✔ Produced evidence-ready material suitable for inclusion in the Week 6 GitHub journal
+```
+## Final Reflection
+
+Week 6 was the point where the entire project came together. Rather than simply securing or configuring a server, I was actively analysing its behaviour in the same way a systems engineer would in a real environment.
+
+Being able to visualise improvements through charts made the optimisation process feel professional, measurable, and rewarding. This week reinforced the value of evidence-driven decision-making and demonstrated how careful measurement, tuning, and validation can lead to meaningful performance improvements.
+
 
