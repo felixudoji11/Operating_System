@@ -117,8 +117,7 @@ The workstation virtual machine was also configured with two network adapters:
 After booting both virtual machines, I used the `ip addr` command to verify network interfaces and assigned IP addresses.
 
 #### Server output
-```bash
-ip addr
+
 ---
 ### 5. System Specification Documentation (CLI Output)
 
