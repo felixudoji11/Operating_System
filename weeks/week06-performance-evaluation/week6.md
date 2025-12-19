@@ -21,8 +21,7 @@ This week felt the most like real-world system administration. Instead of focusi
 
 The process of comparing baseline performance against stressed and optimised scenarios helped me understand how operating system components interact under load. It also reinforced the importance of evidence-based decision-making, where optimisation choices are justified using measurable improvements rather than assumptions.
 
-```
-## Week Overview (Reflective Summary)
+###Week Overview (Reflective Summary)
 
 At the start of Week 6, I designed a structured and repeatable performance testing strategy to ensure that each workload category was evaluated consistently and fairly. Every application selected earlier in the coursework (CPU, memory, disk I/O, network, and server workloads) was tested under the same staged conditions.
 
@@ -58,7 +57,6 @@ By the end of the week, I had not only collected raw performance data but also t
 
 This process reinforced the value of structured testing and visualisation. Rather than relying on isolated command output, I was able to analyse trends, compare scenarios, and justify optimisation decisions using quantitative evidence. This made the performance analysis more rigorous, defensible, and aligned with real-world system administration practices.
 
-```
 
 ## 6.1 Detailed Testing Approach
 
@@ -331,6 +329,7 @@ This was my first practical experience working with Linux I/O schedulers. Observ
 Network performance was evaluated using `iperf3` to measure throughput and latency under load. Prior to optimisation, the server achieved approximately **940 Mbps** during sustained network testing.
 
 After tuning network buffer sizes and related kernel parameters, throughput increased to around **970 Mbps**. In addition to higher throughput, network latency under load was reduced by approximately **30 ms**, indicating more efficient packet handling and reduced buffering delays.
-```
+
+
 ### Reflection
 Network tuning produced the clearest and most immediately visible performance improvements. Adjusting a small number of kernel parameters resulted in measurable gains in both throughput and latency, highlighting how impactful targeted network optimisation can be in high-bandwidth scenarios.
