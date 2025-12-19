@@ -113,6 +113,5 @@ Medium. Privilege escalation often follows initial access and can have severe co
 - Enforce AppArmor profiles to restrict application capabilities
 - Keep the system up to date with regular security updates
 - Use `sudo` only when required and avoid routine operation with elevated privileges
-
----
-
+### Reflection
+Developing this threat model helped me understand that security is not achieved through a single control, but through multiple overlapping layers. Each mitigation on its own reduces risk slightly, but when combined, they significantly limit an attacker’s ability to compromise the system. This model directly informed the security checklist in Week 2 and the practical hardening work carried out in Week 4 and Week 5.
