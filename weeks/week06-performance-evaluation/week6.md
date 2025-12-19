@@ -310,7 +310,7 @@ This analysis helped me understand how much impact background services and sched
 During the memory stress test, RAM usage increased to nearly **2 GB**, indicating significant memory pressure under load. This aligned with expectations for a memory-intensive workload and confirmed that the test was effectively stressing the system’s memory subsystem.
 
 After enabling **zRAM** and tuning memory-related parameters such as swappiness, peak memory usage during load was reduced to approximately **1.5 GB**. This reduction indicates that compressed RAM-based swap was successfully absorbing pressure that would otherwise have resulted in heavier disk swapping.
-```
+
 ### Reflection
 zRAM proved to be a surprisingly effective optimisation. Under high memory pressure, the server remained noticeably more responsive, with fewer stalls and reduced performance degradation. This highlighted how memory compression can significantly improve system behaviour on resource-constrained virtual machines.
 
