@@ -26,3 +26,15 @@ ssh-keygen -t ed25519 -C "adminuser-key"
 ### Step 2 — Copy the public key to the server
 ```bash
 ssh-copy-id adminuser@192.168.56.101
+
+```
+
+## 4.2 SSH Hardening (`sshd_config` Modification)
+
+To reduce the attack surface of the server, I hardened the SSH configuration by modifying the SSH daemon configuration file. All changes were carried out remotely via SSH, in accordance with the coursework requirement for headless administration.
+
+---
+
+### Editing the SSH Configuration File
+```bash
+sudo nano /etc/ssh/sshd_config
