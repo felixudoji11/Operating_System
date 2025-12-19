@@ -1,22 +1,39 @@
-# WEEK 2 — Security Planning & Testing Methodology (Phase 2)
-*(Personal, detailed, reflective technical journal)*
+# Week 2 — Security Planning & Testing Methodology (Phase 2)
 
 ## Week Overview
+This week focused on designing the security baseline for my Linux server and developing a structured performance testing methodology that would later be implemented during the configuration and evaluation phases of the coursework. All work completed this week forms the foundation for the hands-on security implementation in Week 4 and the performance evaluation in Week 6.
 
-This week, I focused heavily on planning the security baseline for my Linux server and developing a structured performance testing methodology that I would later implement in the performance weeks. Everything I produced here forms the foundation for the hands-on configuration work I would complete in Week 4 and beyond.
+I approached this phase as if planning a real production server deployment. Rather than focusing only on commands, I concentrated on understanding **why** each security control matters and how different layers of security interact. This involved researching SSH hardening practices, firewall strategies, access control models (AppArmor vs SELinux), and core performance testing principles such as baselining, controlled load generation, and metric analysis.
 
-I intentionally approached this week as if I were an actual systems administrator planning a secure deployment. I wanted to show that I understand why each security measure matters — not just the commands. So I spent a lot of time researching SSH hardening, firewall strategies, access control models (AppArmor vs SELinux), and performance testing principles such as CPU profiling, load monitoring, and baseline vs stress testing.
+Although this week was primarily planning-focused, I tested and documented the relevant command-line tools via SSH to ensure a smooth transition into later implementation phases.
 
-This week was planning-focused, but my journal documents the exact CLI commands I tested on my server so that later weeks connect cleanly.
+---
 
 ## 2.1 Performance Testing Plan
-*(How I planned to measure performance, what metrics I chose, and why)*
 
-To prepare for the performance-heavy workload of Week 6, I designed a structured approach to collecting and analysing performance data remotely via SSH. I wanted my strategy to mirror what real sysadmins and DevOps engineers do when testing servers.
+To prepare for the performance-intensive testing in Week 6, I designed a structured approach for collecting and analysing performance data remotely via SSH. The goal was to mirror how system administrators and DevOps engineers evaluate server performance in real environments.
 
-### My Personal Reflection:
-At first, I thought performance testing was just about running htop and watching numbers go up. But when I started reading documentation and guides, I realised proper performance evaluation requires a systematic plan — establishing baselines, applying controlled workloads, collecting metrics consistently, and analysing patterns. That shifted my mindset, so this section became my blueprint for all future testing.
+### Personal Reflection
+Initially, I assumed performance testing involved simply running tools like `htop` and observing changes in resource usage. However, after reviewing professional documentation and performance guides, I realised that meaningful evaluation requires a systematic methodology. This includes establishing baselines, applying controlled workloads, collecting metrics consistently, and analysing trends rather than isolated values. This section became the blueprint for all later performance testing.
+
+---
 
 ### Remote Monitoring Methodology
-Tools I decided to use (all via SSH):
-sudo ufw allow from <workstation_ip> to any port 22 proto tcp
+
+All monitoring was planned to be performed remotely via SSH using lightweight command-line tools.
+
+| Tool | Purpose | Reason for Selection |
+|---|---|---|
+| `top` / `htop` | Live CPU and memory monitoring | Provides immediate real-time feedback |
+| `vmstat` | CPU, memory, and interrupts | Lightweight and suitable for repeated sampling |
+| `iostat` | Disk throughput and I/O wait | Essential for analysing disk-intensive workloads |
+| `ss` / `iftop` | Network monitoring | Useful for observing throughput and socket activity |
+| `systemctl` | Service status under load | Helps assess service behaviour during stress |
+| `dstat` | Multi-metric logging | Suitable for timestamped performance logging |
+
+#### Example commands tested
+```bash
+top
+vmstat 2 10
+iostat -x 2 10
+dstat -tcmnd
