@@ -13,7 +13,6 @@ To begin, I mapped out the overall system architecture to clearly understand how
 
 ### Architecture Overview
 
-```text
 ┌────────────────────────┐        SSH        ┌──────────────────────────┐
 │   Workstation System   │ ───────────────▶ │   Headless Linux Server   │
 │   (Ubuntu Desktop VM)  │ ◀─────────────── │     (Ubuntu Server)       │
@@ -21,7 +20,6 @@ To begin, I mapped out the overall system architecture to clearly understand how
            ▲
            │
            └──────── Host-Only + NAT Networking ────────┘
-
 ---
 
 ### 2. Distribution Selection Justification
