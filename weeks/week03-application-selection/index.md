@@ -41,12 +41,57 @@ The following sections document the installation commands used and the technical
 
 ---
 
-### ### Installing `fio`, `iperf3`, and `nginx`
+### Installing `fio`, `iperf3`, and `nginx`
 ```bash
 sudo apt install fio iperf3 nginx -y
 sudo systemctl enable nginx
 sudo systemctl start nginx
+---
+
+### 3.3 Expected Resource Profiles
+
+Before running any performance tests, I documented the expected behaviour of each selected application. Defining these expectations in advance provides a baseline for comparison with the actual results collected in Week 6 and supports structured analysis of operating system behaviour under different workloads.
 
 ---
 
+### CPU-Intensive Workload (`stress-ng`)
+**Expected behaviour:**
+- CPU usage spikes to **90–100%**
+- System load increases beyond the number of available CPU cores
+- Minimal disk or memory usage unless explicitly configured
 
+**Reasoning:**  
+CPU stress workloads typically execute continuous computation loops, placing sustained pressure on the CPU scheduler with little interaction with memory or storage subsystems.
+
+---
+
+### Memory-Intensive Workload (`stress-ng`)
+**Expected behaviour:**
+- RAM usage increases according to the allocated amount (e.g. **1–3 GB**)
+- Possible swap usage if memory pressure exceeds physical RAM
+- Moderately elevated CPU usage due to memory allocation and management operations
+
+---
+
+### Disk I/O-Intensive Workload (`fio`)
+**Expected behaviour:**
+- High read and write throughput
+- Significant disk latency variations under sustained load
+- Increased **I/O wait** percentage visible in CPU statistics
+
+---
+
+### Network-Intensive Workload (`iperf3`)
+**Expected behaviour:**
+- High incoming or outgoing bandwidth depending on test direction
+- Increased packet processing load
+- Potential network saturation depending on virtual machine and host limitations
+
+---
+
+### Server / Service Workload (`nginx`)
+**Expected behaviour:**
+- Moderate CPU usage per request
+- Increased memory usage during concurrency testing
+- Low response times under baseline conditions
+- Higher response times under heavy load
