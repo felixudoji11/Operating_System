@@ -45,3 +45,7 @@ The following sections document the installation commands used and the technical
 ```bash
 sudo apt update
 sudo apt install stress-ng -y
+---
+### 3.2.2 Installing `fio`
+```bash
+sudo apt install fio -y
