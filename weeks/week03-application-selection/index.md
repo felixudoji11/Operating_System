@@ -41,8 +41,12 @@ The following sections document the installation commands used and the technical
 
 ---
 
-### 3.2.1 Installing `stress-ng`
+### ### Installing `fio`, `iperf3`, and `nginx`
 ```bash
-sudo apt update
-sudo apt install stress-ng -y
-sudo apt install fio -y
+sudo apt install fio iperf3 nginx -y
+sudo systemctl enable nginx
+sudo systemctl start nginx
+
+---
+
+
