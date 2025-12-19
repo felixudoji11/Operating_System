@@ -21,7 +21,8 @@ This constraint made the risk of lockout very real. Misconfiguring the firewall 
 ```bash
 ssh-keygen -t ed25519 -C "adminuser-key"
 
----
+```bash
+
 ### Step 2 — Copy the public key to the server
 ```bash
 ssh-copy-id adminuser@192.168.56.101
