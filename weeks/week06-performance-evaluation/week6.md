@@ -304,7 +304,7 @@ After applying optimisation steps such as CPU scheduler tuning and reducing unne
 ### Reflection
 
 This analysis helped me understand how much impact background services and scheduler behaviour can have on CPU-bound applications. Even without changing the workload itself, careful system tuning produced measurable performance gains, reinforcing the importance of optimisation driven by evidence rather than assumptions.
-```
+
 ### Memory Analysis
 
 During the memory stress test, RAM usage increased to nearly **2 GB**, indicating significant memory pressure under load. This aligned with expectations for a memory-intensive workload and confirmed that the test was effectively stressing the system’s memory subsystem.
