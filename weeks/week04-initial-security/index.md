@@ -20,13 +20,3 @@ This constraint made the risk of lockout very real. Misconfiguring the firewall 
 ### Step 1 — Generate an SSH key pair (on workstation)
 ```bash
 ssh-keygen -t ed25519 -C "adminuser-key"
-
-### 4.2 SSH Hardening (`sshd_config` Modification)
-
-To reduce the attack surface of the server, I hardened the SSH configuration by modifying the SSH daemon configuration file. All changes were performed remotely via SSH, in line with the coursework requirement for headless administration.
-
----
-
-### Editing the SSH Configuration File
-```bash
-sudo nano /etc/ssh/sshd_config
