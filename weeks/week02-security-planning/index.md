@@ -37,3 +37,38 @@ top
 vmstat 2 10
 iostat -x 2 10
 dstat -tcmnd
+
+## 2.2 Security Configuration Checklist
+
+This section represents the core planning output of Week 2. I created a comprehensive security checklist covering all mandatory security controls required by the coursework. Each control is accompanied by a justification to demonstrate understanding of *why* the measure is necessary, not just how it is implemented.
+
+---
+
+### SSH Hardening Plan
+
+| Security Task | Planned Action | Why It Is Important |
+|---|---|---|
+| Disable password authentication | Set `PasswordAuthentication no` in `sshd_config` | Prevents brute-force password attacks |
+| Enable key-based authentication | Generate SSH key pair and install public key | Keys are cryptographically stronger and cannot be brute-forced |
+| Change default SSH port (optional) | Move from port 22 to a custom port | Reduces automated scan noise |
+| Disable root login | Set `PermitRootLogin no` | Prevents attackers targeting the root account |
+| Restrict SSH to workstation IP | Firewall rule allowing SSH only from workstation IP | Provides strong network-based access control |
+
+---
+
+### Firewall Configuration (UFW)
+
+The firewall forms the first line of defence by controlling which traffic is allowed to reach the server.
+
+#### Planned firewall actions:
+- Set default policy to deny all incoming traffic
+- Allow SSH access only from the workstation IP
+- Allow all outgoing traffic
+- Enable logging at a low verbosity level
+
+#### Example commands planned for implementation:
+```bash
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw allow from <workstation_ip> to any port 22 proto tcp
+sudo ufw enable
