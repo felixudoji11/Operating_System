@@ -128,3 +128,21 @@ nano monitor-server.sh
 
 ```
 
+## Week 5 Summary
+
+During Week 5, I successfully implemented advanced security and monitoring controls that significantly strengthened the server’s security posture. The following objectives were achieved:
+
+- ✔ Mandatory Access Control using **AppArmor**
+- ✔ Automatic security updates via unattended upgrades
+- ✔ **Fail2ban** intrusion detection for SSH protection
+- ✔ A security baseline audit script (`security-baseline.sh`)
+- ✔ A remote performance monitoring script (`monitor-server.sh`)
+- ✔ All configuration and scripting performed **entirely via SSH**
+
+---
+
+## Final Reflection
+
+Week 5 pushed my understanding of Linux security to a new level. Prior to this phase, I was familiar with tools such as AppArmor and Fail2ban in theory, but I had never configured them independently from scratch.
+
+Developing custom audit and monitoring scripts was particularly valuable, as it shifted my mindset from simply securing a server to actively **verifying and measuring its security state**. This week felt like a transition from basic configuration tasks to professional system administration, where automation, monitoring, and validation are essential for maintaining secure and reliable systems.
