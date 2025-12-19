@@ -119,3 +119,12 @@ After booting both virtual machines, I used the `ip addr` command to verify netw
 #### Server output
 ```bash
 ip addr
+---
+### 5. System Specification Documentation (CLI Output)
+
+To establish a baseline understanding of the server environment, I used mandatory command-line tools to document the operating system, hardware resources, storage usage, and network configuration. All commands were executed directly on the server via the terminal.
+---
+### Kernel and System Information
+```bash
+uname -a
+---
