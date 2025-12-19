@@ -32,7 +32,7 @@ Before deploying the server, I compared multiple Linux server distributions to d
 
 | Distribution | Pros | Cons | Suitability |
 |---|---|---|---|
-| **Ubuntu Server** | Large community support, excellent documentation, AppArmor enabled by default, stable LTS releases | Slightly larger package base | ⭐ Best balance for learning and stability |
+| **Ubuntu Server** | Large community support, excellent documentation, AppArmor enabled by default, stable LTS releases | Slightly larger package base |  Best balance for learning and stability |
 | **CentOS Stream** | SELinux enforced by default, enterprise-focused tooling | Rolling-release model may introduce unexpected changes | Suitable, but less predictable |
 | **Debian Server** | Extremely stable, minimal installation | Older package versions | Good for production, less ideal for learning |
 
@@ -53,3 +53,69 @@ After evaluating the available options, I selected **Ubuntu Server 22.04 LTS** a
 
 ### Reflection
 I chose Ubuntu Server because it provides an ideal balance between stability and accessibility. Nearly all tools required for this module are well supported on Ubuntu, and the abundance of troubleshooting documentation reduces friction when diagnosing issues. This allows me to focus on understanding operating system behaviour and security concepts rather than distribution-specific complications.
+--- 
+## 3. Workstation Configuration Decision
+
+To support secure remote administration of the server, I evaluated three possible workstation configurations:
+
+- **Option A:** Linux Desktop Virtual Machine  
+- **Option B:** Host machine with SSH client  
+- **Option C:** Hybrid approach (host + VM)
+
+---
+
+### Final Choice: Option A — Ubuntu Desktop VM
+
+After evaluating all options, I selected **Option A: Ubuntu Desktop Virtual Machine** as my workstation environment.
+
+#### Reasons for selection:
+- Provides a full Linux command-line environment
+- Avoids modifying SSH keys or configuration files on the host operating system
+- Ensures consistency between workstation and server, simplifying troubleshooting
+- Allows snapshot creation before major configuration changes
+- Supports native Linux administration and monitoring tools
+
+---
+
+### Reflection
+Choosing a Linux-based workstation significantly improved my workflow when administering the server. Using a consistent operating system on both the workstation and server made it easier to interpret command output and reduced unexpected compatibility issues. It also allowed seamless use of Linux-native tools such as `htop`, `nmap`, and `iftop`, which proved valuable throughout the coursework.
+---
+## 4. Network Configuration Documentation
+
+To ensure secure and reliable communication between the workstation and the server, I configured VirtualBox networking to support SSH-only administration while minimising external exposure.
+
+---
+
+### Server VM Network Setup
+
+The server virtual machine was configured with two network adapters:
+
+- **Adapter 1: NAT**  
+  Used to provide internet access for system updates and package installation.
+
+- **Adapter 2: Host-Only Adapter**  
+  Used exclusively for SSH communication with the workstation.
+
+This configuration allows the server to receive updates while remaining isolated from external networks for administrative access.
+
+---
+
+### Workstation VM Network Setup
+
+The workstation virtual machine was also configured with two network adapters:
+
+- **Adapter 1: NAT**  
+  Provides internet connectivity for documentation, tool installation, and updates.
+
+- **Adapter 2: Host-Only Adapter**  
+  Enables direct SSH communication with the server over a private network.
+
+---
+
+### Assigned IP Addresses
+
+After booting both virtual machines, I used the `ip addr` command to verify network interfaces and assigned IP addresses.
+
+#### Server output
+```bash
+ip addr
