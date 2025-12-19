@@ -19,11 +19,10 @@ Reflection: I chose this setup because having both systems as VMs avoids modifyi
 2. Distribution Selection Justification
 I compared three major server distributions before choosing Ubuntu Server.
 
-Distribution	Pros	Cons	Suitability
-Ubuntu Server	Large community support, excellent documentation, AppArmor enabled by default, stable LTS releases	Slightly larger package base	⭐ Best balance for learning + stability
+Distribution	Pros	Cons	Suitabilit Ubuntu Server	Large community support, excellent documentation, AppArmor enabled by default, stable LTS releases	Slightly larger package base	Best balance for learning + stability
 CentOS Stream	SELinux enforced by default, enterprise-focused	Rolling-release model can introduce changes unexpectedly	Good, but not ideal for this coursework
 Debian Server	Very stable, minimal	Older packages	Good for production, less ideal for learning new tools
-⭐ Final Choice: Ubuntu Server 22.04 LTS
+Final Choice: Ubuntu Server 22.04 LTS
 Reasons:
 
 Long-term support means fewer breaking changes.
@@ -45,7 +44,7 @@ B. My host machine with SSH client
 
 C. A hybrid approach
 
-⭐ Final Choice: Option A — Ubuntu Desktop VM
+ Final Choice: Option A — Ubuntu Desktop VM
 Reasons:
 
 Full Linux CLI environment.
@@ -61,12 +60,12 @@ Reflection: Choosing a Linux workstation improved my terminal workflow and made 
 4. Network Configuration Documentation
 To ensure both systems could communicate securely, I configured VirtualBox networking.
 
-🔧 Server VM Network Setup
+Server VM Network Setup
 Adapter 1: NAT (for internet access & package installation)
 
 Adapter 2: Host-Only Adapter (for SSH communication with the workstation)
 
-🔧 Workstation VM Network Setup
+ Workstation VM Network Setup
 Adapter 1: NAT
 
 Adapter 2: Host-Only Adapter
@@ -85,28 +84,28 @@ $ ip addr
 2: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500
 inet 192.168.56.1/24
 Result
-✔ Both systems are now on the same host-only network
-✔ Server reachable only from my workstation
-✔ Suitable for SSH-only administration
+ Both systems are now on the same host-only network
+ Server reachable only from my workstation
+ Suitable for SSH-only administration
 
 Reflection: This setup helped me understand the isolation benefits of host-only networks and how they reduce attack surface compared to bridged networking.
 
 5. System Specification Documentation (CLI Output)
 I used mandatory CLI tools to document hardware and OS details.
 
-🔹 uname -a
+ uname -a
 Linux server 5.15.0-94-generic #104-Ubuntu SMP x86_64 GNU/Linux
-🔹 free -h
+ free -h
 total used free
 Mem: 2048M 350M 1600M
 Swap: 2048M 0M 2048M
-🔹 df -h
+ df -h
 Filesystem Size Used Avail Use%
 /dev/sda1 20G 2.1G 17G 11%
-🔹 lsb_release -a
+ lsb_release -a
 Distributor ID: Ubuntu
 Description: Ubuntu 22.04.3 LTS
-🔹 Server network info
+ Server network info
 $ ip addr show enp0s8
 inet 192.168.56.101/24
 Reflection: Running these commands gave me a clearer picture of my VM resource usage and helped confirm that no graphical interface was installed, keeping the system minimal and server-oriented.
