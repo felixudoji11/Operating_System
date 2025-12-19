@@ -41,13 +41,6 @@ The following sections document the installation commands used and the technical
 
 ---
 
-### Installing `fio`, `iperf3`, and `nginx`
-```bash
-sudo apt install fio iperf3 nginx -y
-sudo systemctl enable nginx
-sudo systemctl start nginx
----
-
 ### 3.3 Expected Resource Profiles
 
 Before running any performance tests, I documented the expected behaviour of each selected application. Defining these expectations in advance provides a baseline for comparison with the actual results collected in Week 6 and supports structured analysis of operating system behaviour under different workloads.
