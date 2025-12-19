@@ -22,6 +22,7 @@ To begin, I mapped out the overall system architecture to clearly understand how
            │
            └──────── Host-Only + NAT Networking ────────┘
 
+---
 
 ### 2. Distribution Selection Justification
 
