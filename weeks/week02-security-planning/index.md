@@ -59,12 +59,7 @@ The firewall forms the first line of defence by controlling which traffic is all
 - Allow all outgoing traffic
 - Enable logging at a low verbosity level
 
-#### Example commands planned for implementation:
-```bash
-sudo ufw default deny incoming
-sudo ufw default allow outgoing
-sudo ufw allow from <workstation_ip> to any port 22 proto tcp
-sudo ufw enable
+
 ### 2.3 Threat Model (Reflective Documentation)
 
 This section documents the threat model developed for my server deployment. Rather than listing generic threats, I identified realistic risks specific to my configuration and mapped each threat to concrete mitigation strategies planned or implemented throughout the coursework.
