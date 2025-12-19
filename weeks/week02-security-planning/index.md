@@ -65,3 +65,59 @@ sudo ufw default deny incoming
 sudo ufw default allow outgoing
 sudo ufw allow from <workstation_ip> to any port 22 proto tcp
 sudo ufw enable
+### 2.3 Threat Model (Reflective Documentation)
+
+This section documents the threat model developed for my server deployment. Rather than listing generic threats, I identified realistic risks specific to my configuration and mapped each threat to concrete mitigation strategies planned or implemented throughout the coursework.
+
+The goal of this threat model is to demonstrate an understanding of how attackers might target the system and how layered security controls work together to reduce risk.
+
+---
+
+### Threat 1 — Brute-Force SSH Attacks
+
+**Risk:**  
+Attackers attempt to gain access by repeatedly guessing user credentials over SSH.
+
+**Likelihood:**  
+Very high. SSH is a common attack vector and is frequently targeted by automated bots and scanning tools.
+
+**Mitigation strategies:**
+- Disable password authentication and enforce key-based authentication
+- Restrict SSH access to a single trusted workstation IP using firewall rules
+- Disable root login over SSH to reduce the attack surface
+- Enable `fail2ban` to automatically block repeated failed authentication attempts (planned for Week 5)
+
+---
+
+### Threat 2 — Unauthorised Service Access
+
+**Risk:**  
+Misconfigured or unnecessary services expose network ports, allowing unauthorised access or exploitation.
+
+**Likelihood:**  
+Medium to high, particularly during early configuration stages when services may be installed with default settings.
+
+**Mitigation strategies:**
+- Configure the firewall with a default-deny policy for incoming traffic
+- Allow only explicitly required services and ports
+- Perform regular port scanning from the workstation using tools such as `nmap`
+- Apply AppArmor confinement to network-facing services to limit the impact of potential compromise
+
+---
+
+### Threat 3 — Privilege Escalation
+
+**Risk:**  
+An attacker exploits a vulnerable binary, misconfiguration, or weak permission model to gain elevated privileges.
+
+**Likelihood:**  
+Medium. Privilege escalation often follows initial access and can have severe consequences if not mitigated.
+
+**Mitigation strategies:**
+- Apply the principle of least privilege for all users and services
+- Enforce AppArmor profiles to restrict application capabilities
+- Keep the system up to date with regular security updates
+- Use `sudo` only when required and avoid routine operation with elevated privileges
+
+---
+
