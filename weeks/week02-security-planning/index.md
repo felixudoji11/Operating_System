@@ -31,12 +31,6 @@ All monitoring was planned to be performed remotely via SSH using lightweight co
 | `systemctl` | Service status under load | Helps assess service behaviour during stress |
 | `dstat` | Multi-metric logging | Suitable for timestamped performance logging |
 
-#### Example commands tested
-```bash
-top
-vmstat 2 10
-iostat -x 2 10
-dstat -tcmnd
 ## 2.2 Security Configuration Checklist
 
 This section represents the core planning output of Week 2. I created a comprehensive security checklist covering all mandatory security controls required by the coursework. Each control is accompanied by a justification to demonstrate understanding of *why* the measure is necessary, not just how it is implemented.
