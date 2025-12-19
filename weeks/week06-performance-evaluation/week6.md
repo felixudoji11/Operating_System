@@ -387,6 +387,7 @@ To reduce background resource usage and improve overall system responsiveness, I
 sudo systemctl disable --now cups
 sudo systemctl disable --now avahi-daemon
 
+```
 ## Week 6 Summary
 
 During Week 6, I successfully completed the full performance evaluation and analysis phase of the coursework. The following objectives were achieved:
@@ -398,7 +399,8 @@ During Week 6, I successfully completed the full performance evaluation and anal
 - ✔ Measured performance improvements using charts and tables
 - ✔ Used both manual commands and scripted monitoring tools
 - ✔ Produced evidence-ready material suitable for inclusion in the Week 6 GitHub journal
-```
+
+---
 ## Final Reflection
 
 Week 6 was the point where the entire project came together. Rather than simply securing or configuring a server, I was actively analysing its behaviour in the same way a systems engineer would in a real environment.
