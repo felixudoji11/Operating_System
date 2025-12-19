@@ -81,6 +81,17 @@ CPU stress workloads typically execute continuous computation loops, placing sus
 - Potential network saturation depending on virtual machine and host limitations
 
 ---
+## 3.4 Monitoring Strategy
+
+This section documents how I planned to measure and observe each application’s behaviour during performance testing. Defining the monitoring approach in advance ensured that data collection in Week 6 would be consistent, repeatable, and suitable for quantitative analysis.
+
+---
+### CPU Monitoring
+**Tools:**
+```bash
+top
+vmstat 1
+mpstat -P ALL 1
 
 ### Server / Service Workload (`nginx`)
 **Expected behaviour:**
@@ -88,3 +99,6 @@ CPU stress workloads typically execute continuous computation loops, placing sus
 - Increased memory usage during concurrency testing
 - Low response times under baseline conditions
 - Higher response times under heavy load
+
+---
+
