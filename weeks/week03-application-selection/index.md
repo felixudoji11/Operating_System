@@ -35,9 +35,13 @@ Creating this matrix became one of the most valuable planning outputs so far. It
 
 ## 3.2 Installation Documentation (SSH-Based Installations)
 
-All installations were performed **exclusively via SSH** from the workstation, maintaining the required headless server administration approach.
+All application installations were performed **exclusively via SSH** from the workstation system. This maintained the required headless-server configuration and ensured that all deployment tasks were carried out using command-line tools only.
 
-### Install `stress-ng`
+The following sections document the installation commands used and the technical rationale for selecting each application.
+
+---
+
+### 3.2.1 Installing `stress-ng`
 ```bash
 sudo apt update
 sudo apt install stress-ng -y
