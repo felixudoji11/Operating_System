@@ -19,3 +19,7 @@ At first, I thought performance testing was just about running htop and watching
 
 ### Remote Monitoring Methodology
 Tools I decided to use (all via SSH):
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw allow from <workstation_ip> to any port 22 proto tcp
+sudo ufw enable
