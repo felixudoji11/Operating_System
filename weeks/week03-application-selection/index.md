@@ -42,7 +42,7 @@ The following sections document the installation commands used and the technical
 ---
 
 ### 3.2.1 Installing `stress-ng`
-```bash
+
 sudo apt update
 sudo apt install stress-ng -y
 ---
